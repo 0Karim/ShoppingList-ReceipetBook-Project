@@ -1,4 +1,4 @@
-import { from } from 'rxjs';
+import { EventEmitter } from '@angular/core';
 import {Receipe} from './receipes.model';
 
 
@@ -14,6 +14,7 @@ export class ReceipeService
         'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=960,872')
       ];
 
+      recipeSelected : EventEmitter<Receipe> = new EventEmitter<Receipe>();
 
       getReceipe(){
           return this.receipes.slice(); //slice() will return a new copy from the receipes array not a refrence to it
