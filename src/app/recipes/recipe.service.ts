@@ -1,7 +1,9 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import {Receipe} from './receipes.model';
 
+@Injectable()
 
 export class ReceipeService
 {
@@ -12,7 +14,7 @@ export class ReceipeService
         'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
         [
             new Ingredient("Meat" , 1),
-            new Ingredient("French Frise" , 1),
+            new Ingredient("French Frise" , 20),
         ]),
         
     
@@ -27,7 +29,17 @@ export class ReceipeService
 
       recipeSelected : EventEmitter<Receipe> = new EventEmitter<Receipe>();
 
+      /**
+       *
+       */
+      constructor(private shoppingListService : ShoppingListService) {}
+
       getReceipe(){
           return this.receipes.slice(); //slice() will return a new copy from the receipes array not a refrence to it
+      }
+
+      AddIngredeintsToShoppingList(ingredeints : Ingredient[])
+      {
+          this.shoppingListService.addIngredients(ingredeints);
       }
 }
