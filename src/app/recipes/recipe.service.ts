@@ -1,17 +1,28 @@
 import { EventEmitter } from '@angular/core';
+import { Ingredient } from '../shared/ingredient.model';
 import {Receipe} from './receipes.model';
 
 
 export class ReceipeService
 {
     private receipes : Array<Receipe> = [
-        new Receipe('A Test Receipe' , 
-        'this is simply a test' , 
-        'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=960,872'),
+        new Receipe(
+            'Tasty Schnitzel',
+            'A super-tasty Schnitzel - just awesome!',
+        'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
+        [
+            new Ingredient("Meat" , 1),
+            new Ingredient("French Frise" , 1),
+        ]),
+        
     
-        new Receipe('A Test Receipe 2' , 
-        'this is simply a test 2' , 
-        'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=960,872')
+        new Receipe('Big Fat Burger',
+        'What else you need to say?', 
+        'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
+        [
+            new Ingredient('Buns' , 2),
+            new Ingredient("Meat" , 1)
+        ]),
       ];
 
       recipeSelected : EventEmitter<Receipe> = new EventEmitter<Receipe>();
